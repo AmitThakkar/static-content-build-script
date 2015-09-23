@@ -60,13 +60,20 @@ cd ${sourcePath}
 svn update
 
 case ${environmentNumber} in
-    1)  MakeBuildForEnvironment ${ENVIRONMENTS[0]}
+    1)
+        mkdir -p ${destinationPath}/${ENVIRONMENTS[0]}
+        MakeBuildForEnvironment ${ENVIRONMENTS[0]}
         SUBJECT="${SUBJECT} ${ENVIRONMENTS[0]} Environment"
         ;;
-    2)  MakeBuildForEnvironment ${ENVIRONMENTS[1]}
+    2)
+        mkdir -p ${destinationPath}/${ENVIRONMENTS[1]}
+        MakeBuildForEnvironment ${ENVIRONMENTS[1]}
         SUBJECT="${SUBJECT} ${ENVIRONMENTS[1]} Environemnt"
         ;;
-    3)  MakeBuildForEnvironment ${ENVIRONMENTS[0]}
+    3)
+        mkdir -p ${destinationPath}/${ENVIRONMENTS[0]}
+        mkdir -p ${destinationPath}/${ENVIRONMENTS[1]}
+        MakeBuildForEnvironment ${ENVIRONMENTS[0]}
         MakeBuildForEnvironment ${ENVIRONMENTS[1]}
         SUBJECT="${SUBJECT} ${ENVIRONMENTS[0]}, ${ENVIRONMENTS[1]} Environments"
         ;;
