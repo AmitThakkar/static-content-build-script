@@ -1,8 +1,3 @@
-# Static Content - Build Script
-
-This is a build script repository which have a script for making zip files for static content and send mail with zip files.
-
-```Script
 #!/usr/bin/env bash
 # Build Variables
 OLD_VERSION="0.0.0"
@@ -96,4 +91,3 @@ cd ${CURRENT_PATH}
 echo -e "\n\n\nSending Mail(${SUBJECT}) to ${RECEIVER}"
 echo ${BODY} | mutt -a ${ATTACHMENTS} -s "${SUBJECT}" -- ${RECEIVER}
 echo "Mail Sent"
-```
