@@ -87,7 +87,16 @@ MakeBuildForEnvironment() {
 #Move to Current Path
 cd ${CURRENT_PATH}
 
-#Sending Mail
-echo -e "\n\n\nSending Mail(${SUBJECT}) to ${RECEIVER}"
-echo ${BODY} | mutt -a ${ATTACHMENTS} -s "${SUBJECT}" -- ${RECEIVER}
-echo "Mail Sent"
+echo -n "Do you want to send mail with attachments? [y/N]:"
+read sendMailFlag
+
+if [ "${sendMailFlag}" ] && [ "${sendMailFlag}" != "" ] && [ "N" != "${sendMailFlag}" ] && [ "n" != "${sendMailFlag}" ]; then
+	SendMail
+fi
+
+SendMail() {
+    #Sending Mail
+    echo -e "\n\n\nSending Mail(${SUBJECT}) to ${RECEIVER}"
+    echo ${BODY} | mutt -a ${ATTACHMENTS} -s "${SUBJECT}" -- ${RECEIVER}
+    echo "Mail Sent"
+}
