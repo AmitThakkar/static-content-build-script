@@ -59,6 +59,18 @@ echo -e "\nMaking build for project: ${PROJECTS[${projectNumber}-1]} in ${ENVIRO
 cd ${sourcePath}
 svn update
 
+MakeBuildForEnvironment() {
+    rm -rf ${destinationPath}/${1}/*
+    cp -r  ${sourcePath}/public/ ${destinationPath}/${1}/public
+    cp -r  ${sourcePath}/index.html ${destinationPath}/${1}
+    cp -r  ${sourcePath}/oos.html ${destinationPath}/${1}
+    cp ${configFolder}/${1}/config.xml ${destinationPath}/${1}/cda_resources/
+    sed "s/${OLD_VERSION}/${NEW_VERSION}/" < ${configFolder}/${1}/config.xml > ${destinationPath}/${1}/public/config.xml
+    cd ${destinationPath}/${1}/
+    zip -r ${destinationPath}/${1}/${prefixForZipFile}${1} *
+    ATTACHMENTS=" $ATTACHMENTS ${destinationPath}/${1}/${prefixForZipFile}${1}.zip"
+}
+
 case ${environmentNumber} in
     1)
         mkdir -p ${destinationPath}/${ENVIRONMENTS[0]}
@@ -78,18 +90,6 @@ case ${environmentNumber} in
         SUBJECT="${SUBJECT} ${ENVIRONMENTS[0]}, ${ENVIRONMENTS[1]} Environments"
         ;;
 esac
-
-MakeBuildForEnvironment() {
-    rm -rf ${destinationPath}/${1}/*
-    cp -r  ${sourcePath}/public/ ${destinationPath}/${1}/public
-    cp -r  ${sourcePath}/index.html ${destinationPath}/${1}
-    cp -r  ${sourcePath}/oos.html ${destinationPath}/${1}
-    cp ${configFolder}/${1}/config.xml ${destinationPath}/${1}/cda_resources/
-    sed "s/${OLD_VERSION}/${NEW_VERSION}/" < ${configFolder}/${1}/config.xml > ${destinationPath}/${1}/public/config.xml
-    cd ${destinationPath}/${1}/
-    zip -r ${destinationPath}/${1}/${prefixForZipFile}${1} *
-    ATTACHMENTS=" $ATTACHMENTS ${destinationPath}/${1}/${prefixForZipFile}${1}.zip"
-}
 
 #Move to Current Path
 cd ${CURRENT_PATH}
