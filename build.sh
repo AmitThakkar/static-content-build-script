@@ -22,19 +22,19 @@ case $projectNumber in
     1)
         sourcePath=/Users/amit/Data/Projects/CP/StaticProject1
         destinationPath=~/Desktop/build/sp1
-        configFolder=~/Desktop/config/sp1
+        configFolder=~/Desktop/BuildHelper/sp1
         prefixForZipFile=sp1_
         ;;
     2)
         sourcePath=/Users/amit/Data/Projects/CP/StaticProject2
         destinationPath=~/Desktop/build/sp2
-        configFolder=~/Desktop/config/sp2
+        configFolder=~/Desktop/BuildHelper/sp2
         prefixForZipFile=sp2_
         ;;
     3)
         sourcePath=/Users/amit/Data/Projects/StaticProject3
         destinationPath=~/Desktop/build/sp3
-        configFolder=~/Desktop/config/sp3
+        configFolder=~/Desktop/BuildHelper/sp3
         prefixForZipFile=sp3_
         ;;
 esac
