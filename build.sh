@@ -5,6 +5,7 @@ NEW_VERSION="0.0.90"
 CURRENT_PATH=${PWD}
 PROJECTS=("Static Project1" "Static Project2" "Static Project3")
 ENVIRONMENTS=("dev" "test" "both")
+TODAY=$(date +"%Y-%m-%d %H:%M")
 
 echo -e "\n\n"==============================Starting Build Process===========================================
 echo "Please select a Project for making build: "
@@ -67,7 +68,7 @@ MakeBuildForEnvironment() {
     cp ${configFolder}/${1}/config.xml ${destinationPath}/${1}/cda_resources/
     sed "s/${OLD_VERSION}/${NEW_VERSION}/" < ${configFolder}/${1}/config.xml > ${destinationPath}/${1}/public/config.xml
     cd ${destinationPath}/${1}/
-    zip -r ${destinationPath}/${1}/${prefixForZipFile}${1} *
+    zip -r ${destinationPath}/${1}/${prefixForZipFile}${1}_${TODAY} *
     ATTACHMENTS=" $ATTACHMENTS ${destinationPath}/${1}/${prefixForZipFile}${1}.zip"
 }
 
