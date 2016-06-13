@@ -106,3 +106,13 @@ SendMail() {
     echo "Mail Sent"
 }
 ```
+
+Follow Me
+---
+[Github](https://github.com/AmitThakkar)
+
+[Twitter](https://twitter.com/amit_thakkar01)
+
+[LinkedIn](https://in.linkedin.com/in/amitthakkar01)
+
+[More Blogs By Me](http://amitthakkar.github.io/)
